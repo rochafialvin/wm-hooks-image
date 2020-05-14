@@ -1,9 +1,9 @@
 import React from 'react'
 
-function ImageList() {
+function ImageList(props) {
    return(
       <div>
-         <h1>ImageList Component</h1>
+         <h1>Terdapat {props.images.length} gambar</h1>
       </div>
    )
 }
