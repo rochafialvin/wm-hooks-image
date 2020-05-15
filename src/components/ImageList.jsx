@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+   Card, CardImg, CardText, CardBody,
+   CardTitle, CardSubtitle, Button
+ } from 'reactstrap';
 
 function ImageList(props) {
 
@@ -6,14 +10,14 @@ function ImageList(props) {
    // image : { id, desription, alt_description, urls, likes, user }
    const images = props.images.map(image => {
       return (
-         <div className="card" key={image.id}>
-            <img className="card-img-top" src={image.urls.regular} alt={image.description} /> {/* self closing tag */}
-            <div className="card-body">
-            <h5 className="card-title">{image.description}</h5>
-               <p className="card-text">{image.alt_description}</p>
-            </div>
-            <button className="btn btn-block btn-outline-danger" >Add to favorite</button>
-         </div>
+         <Card>
+            <CardImg top width="100%" src={image.urls.regular} alt={image.alt_description} />
+            <CardBody>
+               <CardTitle><h3>{image.description ? image.description : "No Title"}</h3></CardTitle>
+               <CardText>{image.alt_description}</CardText>
+               <Button color="primary" block >Favorite</Button>
+            </CardBody>
+         </Card>
       )
    })
 

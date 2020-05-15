@@ -1,48 +1,25 @@
 import React, { useState } from 'react'
-import axios from '../config/axios'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 // Components
-import SearchBar from './SearchBar'
-import ImageList from './ImageList'
-import BasicUseState from '../theory/BasicUseState'
+import Home from './Home'
+import Favorites from './Favorites'
+import Header from './Header'
+import BasicUseEffect from '../theory/BasicUseEffect'
 
 function App() {
 
-   // membuat state menggunakan salah satu hook function
-   // useState akan me-return array, kita akan langsung distcrut untuk menentukan nama
-   // nama yang pertama akan digunakan untuk menyimpan state itu sendiri
-   // nama yang kedua digunakan untuk sebuah function yang berguna untuk mengubah data state
-   const [images, setImages] = useState([])
-
-   const onSearchImage = (keyword, amount) =>{
-
-      const config = {
-         params: {
-            query: keyword,
-            per_page : amount
-         }
-      }
-
-      // mengambil foto ke unsplash sesuai dengan keyword
-      // dapat menentukan jumlah gambar yang di dapat, dengan jumlah maksimal 30
-      axios.get('/search/photos', config)
-         //  Kalau berhasil mendapat data, disimpan ke state images
-         .then(res => setImages(res.data.results))
-         // Kalau gagal, munculkan object err di console
-         .catch(err => console.log({err}))
-   }
-
    return(
-      // agar konten berada di tengah
-      <div className="container" >
-         <BasicUseState/>
-         {/* <h1 className="text-center">HOOKS</h1> */}
-         {/* Search Bar memiliki property onSearchImage, akan ada di variable 'props' */}
-         {/* <SearchBar onSearchImage={onSearchImage} />  */}
-         {/* Image List memiliki property images, akan ada di variable 'props' */}
-         {/* <ImageList images={images} /> */}
-      </div>
+      <BrowserRouter>
+         <Header/>
+         <div className="container" >
+            <Route path='/' exact component={Home}  />
+            <Route path='/favorites' component={Favorites}  />
+            <Route path='/theory' component={BasicUseEffect}  />
+         </div>
+      </BrowserRouter>
    )
 }
 
 export default App;
+
