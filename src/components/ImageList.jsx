@@ -6,12 +6,13 @@ function ImageList(props) {
    // image : { id, desription, alt_description, urls, likes, user }
    const images = props.images.map(image => {
       return (
-         <div class="card">
-            <img class="card-img-top" src={image.urls.regular} alt={image.description} /> {/* self closing tag */}
-            <div class="card-body">
-            <h5 class="card-title">{image.description}</h5>
-               <p class="card-text">{image.alt_description}</p>
+         <div className="card" key={image.id}>
+            <img className="card-img-top" src={image.urls.regular} alt={image.description} /> {/* self closing tag */}
+            <div className="card-body">
+            <h5 className="card-title">{image.description}</h5>
+               <p className="card-text">{image.alt_description}</p>
             </div>
+            <button className="btn btn-block btn-outline-danger" >Add to favorite</button>
          </div>
       )
    })
@@ -24,9 +25,3 @@ function ImageList(props) {
 }
 
 export default ImageList;
-
-/*
-   image : {
-      id, desription, alt_description, urls, likes, user
-   }
-*/

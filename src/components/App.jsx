@@ -4,6 +4,7 @@ import axios from '../config/axios'
 // Components
 import SearchBar from './SearchBar'
 import ImageList from './ImageList'
+import BasicUseState from '../theory/BasicUseState'
 
 function App() {
 
@@ -34,11 +35,12 @@ function App() {
    return(
       // agar konten berada di tengah
       <div className="container" >
-         <h1 className="text-center">HOOKS</h1>
+         <BasicUseState/>
+         {/* <h1 className="text-center">HOOKS</h1> */}
          {/* Search Bar memiliki property onSearchImage, akan ada di variable 'props' */}
-         <SearchBar onSearchImage={onSearchImage} /> 
+         {/* <SearchBar onSearchImage={onSearchImage} />  */}
          {/* Image List memiliki property images, akan ada di variable 'props' */}
-         <ImageList images={images} />
+         {/* <ImageList images={images} /> */}
       </div>
    )
 }
