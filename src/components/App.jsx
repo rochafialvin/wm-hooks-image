@@ -8,14 +8,19 @@ import Header from './Header'
 import BasicUseEffect from '../theory/BasicUseEffect'
 import BasicUseState from '../theory/BasicUseState'
 
+// Context
+import FavContextProvider from '../config/context/FavContext'
+
 function App() {
 
    return(
       <BrowserRouter>
          <Header/>
          <div className="container" >
-            <Route path='/' exact component={Home}  />
-            <Route path='/favorites' component={Favorites}  />
+            <FavContextProvider>
+               <Route path='/' exact component={Home}  />
+               <Route path='/favorites' component={Favorites}  />
+            </FavContextProvider>
             <Route path='/theory' component={BasicUseState}  />
          </div>
       </BrowserRouter>
