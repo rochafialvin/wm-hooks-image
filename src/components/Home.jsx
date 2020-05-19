@@ -23,16 +23,18 @@ const Home = () => {
       // amout : '24'
       const config = {
          params: {
-            query: keyword ? keyword : "random",
+            key : '16615802-bb4fc5b2043af8b6b9965e5d2',
+            q: keyword ? keyword : "random",
             per_page : amount ? amount : 10
          }
       }
 
       // mengambil foto ke unsplash sesuai dengan keyword
       // dapat menentukan jumlah gambar yang di dapat, dengan jumlah maksimal 30
-      axios.get('/search/photos', config)
+      // /search/photos : unsplash
+      axios.get('/', config)
          //  Kalau berhasil mendapat data, disimpan ke state images
-         .then(res => setImages(res.data.results))
+         .then(res => setImages(res.data.hits))
          // Kalau gagal, munculkan object err di console
          .catch(err => console.log({err}))
    }

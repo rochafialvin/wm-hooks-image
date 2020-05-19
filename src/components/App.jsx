@@ -6,6 +6,7 @@ import Home from './Home'
 import Favorites from './Favorites'
 import Header from './Header'
 import BasicUseEffect from '../theory/BasicUseEffect'
+import BasicUseState from '../theory/BasicUseState'
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
          <div className="container" >
             <Route path='/' exact component={Home}  />
             <Route path='/favorites' component={Favorites}  />
-            <Route path='/theory' component={BasicUseEffect}  />
+            <Route path='/theory' component={BasicUseState}  />
          </div>
       </BrowserRouter>
    )

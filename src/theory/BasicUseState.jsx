@@ -2,6 +2,8 @@ import React, {useState, useRef} from 'react'
 
 const BasicUseState = () => {
 
+   // useState dalam mengubah datanya, dia tidak secara otomatis melakukan 'merging' melainkan akan replace data yang lama
+
    // membuat state menggunakan salah satu hook function
    // useState akan me-return array, array tersebut akan langsung distruct untuk menentukan dua variable
    // variable yang pertama akan digunakan untuk menyimpan state itu sendiri
@@ -12,7 +14,9 @@ const BasicUseState = () => {
    // state dapat berupa object
    // setName akan me replace object yang tersimpan
    // maka dari itu harus menggunakan metode distruct agar data lama tidak hilang (...name)
+   
    const [name, setName] = useState({ firstName: '', lastName : ''})
+  
 
    // state dapat berupa array
    // setSongs akan me replace array yang tersimpan
@@ -29,6 +33,7 @@ const BasicUseState = () => {
 
    // function yang akan dipangil jika mensubmit
    const addNewSong = (e) => {
+      // biar ga reload browsernya
       e.preventDefault()
 
       const newSong = {
@@ -36,32 +41,37 @@ const BasicUseState = () => {
          artist : artistRef.current.value
       }
 
+      // newSong = {title: 'Any Song', artist : 'ZICO'}
+
       // menambah satu object lagu baru
       setSongs([...songs, newSong])
    }
 
    return (
       <div>
-         <p>Kita memiliki {songs.length} lagu</p>
+         <ul className="list-group">
+            {
+               songs.map(song => <li className="list-group-item" ><b>Title</b> : {song.title} || <b>Artist</b>: {song.artist}</li>)
+            }
+         </ul>
          <form onSubmit={addNewSong} className="form-group mt-5" >
-               <input 
-                  placeholder="Songs" 
-                  className="form-control my-4" 
-                  type="text" 
-                  ref={titleRef} // data yang di ketik akan dapat diakses di titleRef.current.value
-               />
+            <input 
+               placeholder="Songs" 
+               className="form-control my-4" 
+               type="text" 
+               ref={titleRef} // data yang di ketik akan dapat diakses di titleRef.current.value
+            />
 
-               <input 
-                  placeholder="artist" 
-                  className="form-control my-4" 
-                  type="text" 
-                  ref={artistRef} // data yang di ketik akan dapat diakses di artistRef.current.value
-               />
+            <input 
+               placeholder="Artist" 
+               className="form-control my-4" 
+               type="text" 
+               ref={artistRef} // data yang di ketik akan dapat diakses di artistRef.current.value
+            />
 
-               <input className="btn btn-primary btn-block" type="submit" value="Add New Song"/>
-         </form>
-
-         <form className="form-group mt-5" >
+            <input className="btn btn-primary btn-block" type="submit" value="Add New Song"/>
+         </form> 
+         {/* <form className="form-group mt-5" >
             <input 
                placeholder="first name" 
                className="form-control" 
@@ -76,8 +86,9 @@ const BasicUseState = () => {
             />
          </form>
 
+         <p>Object name : {JSON.stringify(name)} </p>
          <p>First Name : {name.firstName}</p>
-         <p>Last Name : {name.lastName}</p>
+         <p>Last Name : {name.lastName}</p> */}
       </div>
    )
 }
@@ -92,3 +103,5 @@ export default BasicUseState
 
 // // mengganti
 // this.setState({firstName : })
+
+
