@@ -17,3 +17,12 @@ const Favorites = () => {
 }
 
 export default Favorites
+
+
+// Exercise
+// 1. Render list image
+// 2. beri tombol remove
+      // - buat tombol
+      // - gunakan dispatch
+      // - bikin case baru di reducer
+      // - gunakan .filter()

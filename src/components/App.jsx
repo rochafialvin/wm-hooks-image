@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './Home'
 import Favorites from './Favorites'
 import Header from './Header'
+
+// theory
 import BasicUseEffect from '../theory/BasicUseEffect'
 import BasicUseState from '../theory/BasicUseState'
 
@@ -17,6 +19,7 @@ function App() {
       <BrowserRouter>
          <Header/>
          <div className="container" >
+            {/* apit components yang ingin diberi akses ke context */}
             <FavContextProvider>
                <Route path='/' exact component={Home}  />
                <Route path='/favorites' component={Favorites}  />
